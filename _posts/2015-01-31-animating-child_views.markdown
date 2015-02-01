@@ -7,7 +7,7 @@ categories:
 ---
 Animating individual Views is something that has become easier with each Android release. There are times, however, when you may want to animate multiple child Views at once, such as when loading a new Activity or Fragment. This could be difficult to achieve, particularly if you want to time each animation to occur after the previous one. 
 
-Luckily, there's already a tool just that: Layout Animations.
+Luckily, there's already a tool just for that: Layout Animations.
 
 <!-- more -->
 
