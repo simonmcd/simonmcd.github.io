@@ -15,7 +15,7 @@ We'll create a simple layout to demonstrate:
 
 {% highlight xml %}
 <LinearLayout
-    xlmns:android="http://schemas.android.com/apk/res/android"
+    xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:orientation="vertical" >
