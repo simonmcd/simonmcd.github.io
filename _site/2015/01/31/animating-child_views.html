@@ -5,10 +5,12 @@
   <meta charset="utf-8">
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
   <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="theme-color" content="#03A9F4">
 
   <title>Animating Child Views</title>
   <meta name="description" content="Animating individual Views is something that has become easier with each Android release. There are times, however, when you may want to animate multiple chi...">
 
+		<link rel='stylesheet' type='text/css' href='http://fonts.googleapis.com/css?family=Raleway' >
   <link rel="stylesheet" href="/css/main.css">
   <link rel="canonical" href="http://simonmcd.com/2015/01/31/animating-child_views.html">
   <link rel="alternate" type="application/rss+xml" title="Simon's Tech Blog" href="http://simonmcd.com/feed.xml" />
@@ -19,25 +21,20 @@
 
     <header class="site-header">
 
-  <div class="wrapper">
+	<div class="wrapper">
+		<img class="heading_image" src="/assets/simon_circle.png" />
+		<h1 class="page_heading">Simon McDonnell</h1>
+	</div>
+	<div class="content">
+        	 <p class="site_nav">
+ 			<a class="nav_button" href="index.html">Home</a>
+ 			<a class="nav_button" href="blog.html">Blog</a>
+			<a class="nav_button" href="http://github.com/simonmcd">Github</a>
+                   	<a class="nav_button" href="https://play.google.com/store/search?q=pub:Simon%20McDonnell">Google Play</a>
+                 	<a class="nav_button" href="https://ie.linkedin.com/pub/simon-mcdonnell/43/673/849">LinkedIn</a>
+		</p>
 
-    <a class="site-title" href="/">Simon's Tech Blog</a>
-
-    <nav class="site-nav">
-      <a href="#" class="menu-icon">
-        <svg viewBox="0 0 18 15">
-          <path fill="#424242" d="M18,1.484c0,0.82-0.665,1.484-1.484,1.484H1.484C0.665,2.969,0,2.304,0,1.484l0,0C0,0.665,0.665,0,1.484,0 h15.031C17.335,0,18,0.665,18,1.484L18,1.484z"/>
-          <path fill="#424242" d="M18,7.516C18,8.335,17.335,9,16.516,9H1.484C0.665,9,0,8.335,0,7.516l0,0c0-0.82,0.665-1.484,1.484-1.484 h15.031C17.335,6.031,18,6.696,18,7.516L18,7.516z"/>
-          <path fill="#424242" d="M18,13.516C18,14.335,17.335,15,16.516,15H1.484C0.665,15,0,14.335,0,13.516l0,0 c0-0.82,0.665-1.484,1.484-1.484h15.031C17.335,12.031,18,12.696,18,13.516L18,13.516z"/>
-        </svg>
-      </a>
-
-      <div class="trigger">
-          <a class="page-link" href="http://simonmcd.com">Back to main site</a>
-      </div>
-    </nav>
-
-  </div>
+  	</div>
 
 </header>
 
@@ -52,16 +49,16 @@
   </header>
 
   <article class="post-content">
-    <p>Animating individual Views is something that has become easier with each Android release. There are times, however, when you may want to animate multiple child Views at once, such as when loading a new Activity or Fragment. This could be difficult to achieve, particularly if you want to time each animation to occur after the previous one. </p>
+    <p>Animating individual Views is something that has become easier with each Android release. There are times, however, when you may want to animate multiple child Views at once, such as when loading a new Activity or Fragment. This can be difficult to achieve, particularly if you want to time each animation to occur after the previous one.</p>
 
-<p>Luckily, there’s already a tool just that: Layout Animations.</p>
+<p>Luckily, there’s already a tool just for that: Layout Animations.</p>
 
 <!-- more -->
 
 <p>We’ll create a simple layout to demonstrate:</p>
 
-<div class="highlight"><pre><code class="language-xml" data-lang="xml"><span class="nt">&lt;LinearLayout</span>
-    <span class="na">xlmns:android=</span><span class="s">&quot;http://schemas.android.com/apk/res/android&quot;</span>
+<figure class="highlight"><pre><code class="language-xml" data-lang="xml"><span class="nt">&lt;LinearLayout</span>
+    <span class="na">xmlns:android=</span><span class="s">&quot;http://schemas.android.com/apk/res/android&quot;</span>
     <span class="na">android:layout_width=</span><span class="s">&quot;match_parent&quot;</span>
     <span class="na">android:layout_height=</span><span class="s">&quot;match_parent&quot;</span>
     <span class="na">android:orientation=</span><span class="s">&quot;vertical&quot;</span> <span class="nt">&gt;</span>
@@ -87,11 +84,11 @@
         <span class="na">android:textSize=</span><span class="s">&quot;14sp&quot;</span>
         <span class="na">android:text=</span><span class="s">&quot;@string/second_paragraph&quot;</span> <span class="nt">/&gt;</span>
 
-<span class="nt">&lt;/LinearLayout&gt;</span></code></pre></div>
+<span class="nt">&lt;/LinearLayout&gt;</span></code></pre></figure>
 
 <p>A simple enough layout. Just assign it to a Fragment or Activity, stick in the needed Strings in your strings.xml file and test it out. Nothing too special. Let’s try adding some animations. Put this in the anim direction in your resources folder:</p>
 
-<div class="highlight"><pre><code class="language-xml" data-lang="xml"><span class="cp">&lt;?xml version=&quot;1.0&quot; encoding=&quot;utf-8&quot;?&gt;</span>
+<figure class="highlight"><pre><code class="language-xml" data-lang="xml"><span class="cp">&lt;?xml version=&quot;1.0&quot; encoding=&quot;utf-8&quot;?&gt;</span>
 <span class="nt">&lt;set</span>
     <span class="na">xmlns:android=</span><span class="s">&quot;http://schemas.android.com/apk/res/android&quot;</span>
     <span class="na">android:interpolator=</span><span class="s">&quot;@android:anim/linear_interpolator&quot;</span>
@@ -102,25 +99,25 @@
         <span class="na">android:toXDelta=</span><span class="s">&quot;0%p&quot;</span>
         <span class="na">android:duration=</span><span class="s">&quot;400&quot;</span> <span class="nt">/&gt;</span>
 
-<span class="nt">&lt;/set&gt;</span></code></pre></div>
+<span class="nt">&lt;/set&gt;</span></code></pre></figure>
 
 <p>This will create an animation that translates (moves) a View from off the screen (-100%) until its left side is at the left side of the screen (0%), giving the impression that it’s sliding in from the left. Now, you could apply this animation to each child View in the LinearLayout yourself but then they would all animate at the same time, which is not the effect we are looking for. So, we need to add another file to the anim folder.</p>
 
-<div class="highlight"><pre><code class="language-xml" data-lang="xml"><span class="nt">&lt;layoutAnimation</span> 
+<figure class="highlight"><pre><code class="language-xml" data-lang="xml"><span class="nt">&lt;layoutAnimation</span> 
     <span class="na">xmlns:android=</span><span class="s">&quot;http://schemas.android.com/apk/res/android&quot;</span>
     <span class="na">android:delay=</span><span class="s">&quot;50%&quot;</span>
-    <span class="na">android:animation=</span><span class="s">&quot;@anim/slide_in_left&quot;</span> <span class="nt">/&gt;</span></code></pre></div>
+    <span class="na">android:animation=</span><span class="s">&quot;@anim/slide_in_left&quot;</span> <span class="nt">/&gt;</span></code></pre></figure>
 
 <p>If you named your animation something other than slide_in_left.xml then name it appropriately here in the animation field. You can tweak the delay field all you want. When the previous child View’s animation reaches this point (in our case, halfway completed) it will initiate the next child’s animation.</p>
 
 <p>Finally, let’s add this to our LinearLayout:</p>
 
-<div class="highlight"><pre><code class="language-xml" data-lang="xml"><span class="nt">&lt;LinearLayout</span>
+<figure class="highlight"><pre><code class="language-xml" data-lang="xml"><span class="nt">&lt;LinearLayout</span>
     <span class="na">xlmns:android=</span><span class="s">&quot;http://schemas.android.com/apk/res/android&quot;</span>
     <span class="na">android:layout_width=</span><span class="s">&quot;match_parent&quot;</span>
     <span class="na">android:layout_height=</span><span class="s">&quot;match_parent&quot;</span>
     <span class="na">android:orientation=</span><span class="s">&quot;vertical&quot;</span>
-    <span class="na">android:layoutAnimation=</span><span class="s">&quot;@anim/linearlayout_enter&quot;</span> <span class="nt">&gt;</span></code></pre></div>
+    <span class="na">android:layoutAnimation=</span><span class="s">&quot;@anim/linearlayout_enter&quot;</span> <span class="nt">&gt;</span></code></pre></figure>
 
 <p>Again, if you’ve named your LayoutAnimation something else use that name here.</p>
 

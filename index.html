@@ -1,23 +1,17 @@
----
-layout: default
----
-
-<div class="home">
-
-  <ul class="post-list">
-    {% for post in site.posts %}
-      <li class="single_post">
-        <span class="post-meta">{{ post.date | date: "%b %-d, %Y" }}</span>
-
-        <h2>
-          <a class="post-link" href="{{ post.url | prepend: site.baseurl }}">{{ post.title }}</a>
-        </h2>
-	<p>{{ post.content | split: '<!-- more -->' | first }}</p>
-	<p><a class="post-link" href="{{ post.url | prepend: site.baseurl }}">Read More</a></p>
-      </li>
-    {% endfor %}
-  </ul>
-
-  <p class="rss-subscribe">subscribe <a href="{{ "/feed.xml" | prepend: site.baseurl }}">via RSS</a></p>
-
-</div>
+<html>
+    <head>
+        <title>Simon McDonnell</title>
+        <link rel="stylesheet" href="/css/main.css">
+    </head>
+    <body>
+        <div class="card_holder">
+            <div class="info_card">
+                <img class="heading_image" src="/assets/simon_circle.png" />
+                <span class="image_text heading_text">Simon McDonnell</span>
+                <br />
+                <span class="image_text sub_heading_text"><a href="https://github.com/simonmcd">GitHub</a></span>
+                <br />
+                <br />
+                <span class="image_text sub_heading_text"><a href="https://ie.linkedin.com/in/simon-mcdonnell-84967343">LinkedIn</a></span>
+            </div>
+        </div>
